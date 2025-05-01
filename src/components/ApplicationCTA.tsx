@@ -158,10 +158,9 @@ const ApplicationCTA = () => {
                         <span className="text-[#00d2ff]">$</span>
                         <span className="ml-1 text-white/90">python submit_application.py</span>
                       </div>
-                      {/* Fixed the JSX > character issues by using proper escaping */}
-                      <div className="text-white/70">{"> "}Checking eligibility...</div>
-                      <div className="text-white/70">{"> "}Processing application data...</div>
-                      <div className="text-green-400">{"> "}Application successfully submitted!</div>
+                      <div className="text-white/70">> Checking eligibility...</div>
+                      <div className="text-white/70">> Processing application data...</div>
+                      <div className="text-green-400">> Application successfully submitted!</div>
                       <div className="flex">
                         <span className="text-[#00d2ff]">$</span>
                         <span className="ml-1 text-white/90 typing-effect">_</span>
