@@ -14,8 +14,10 @@ const ProgramFeatures = () => {
       subtitle: "to top AI conferences",
       description: "Immerse yourself in the process of real-world AI research by delving into literature review, developing and implementing your own ML algorithms, communicating your results in a research publication, and submitting research to top AI conferences like NeurIPS, EMNLP, and ACL.",
       images: [
-        "/lovable-uploads/7418245b-43c9-472d-8cb3-122f92091848.png",
-        "/lovable-uploads/c1f7044b-4820-43f9-befe-52cd5a21e92e.png"
+        "emnlpGroup.png",
+        "emnlp3.png",
+        "emnlp5.png",
+        "emnlp1.png"
       ]
     }
   ];
@@ -26,21 +28,21 @@ const ProgramFeatures = () => {
       id: 1,
       title: "Add advanced research to your portfolio",
       description: "Strengthen your profile for top college admissions, research positions, internships, and beyond.",
-      image: "/lovable-uploads/b1a788b8-da25-4bd6-90fd-b131d74bdf57.png",
+      image: "paperDiagram.png",
       icon: "📄"
     },
     {
       id: 2,
       title: "Master the Foundations of AI and ML",
       description: "Conduct real research and gain hands-on experience with advanced concepts in AI and ML.",
-      image: "/lovable-uploads/6831573d-ebe2-4ce4-99fb-117da105f4e1.png",
+      image: "ieeebhiday1.png",
       icon: "🧠"
     },
     {
       id: 3,
       title: "Publish at Top AI and ML Conferences",
       description: "Submit novel research to top AI conferences at the program's end, such as NeurIPS, ACL, & EMNLP.",
-      image: "/lovable-uploads/dda2008b-1fa9-476e-b5be-5dc754a1ca15.png",
+      image: "vancouver.png",
       icon: "🏆"
     }
   ];
@@ -54,7 +56,7 @@ const ProgramFeatures = () => {
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#3a47d5]/20 to-transparent rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#00d2ff]/20 to-transparent rounded-full blur-3xl"></div>
             
-            <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center">
               <div className="space-y-6">
                 <motion.h2 
                   className="text-3xl md:text-4xl font-bold"
@@ -73,7 +75,13 @@ const ProgramFeatures = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  {content.description}
+                  {content.description.includes("NeurIPS") ? (
+                    <>
+                      Immerse yourself in the process of real-world AI research by delving into literature review, developing and implementing your own ML algorithms, communicating your results in a research publication, and submitting research to top AI conferences like <span className="text-[#00d2ff]">NeurIPS, EMNLP, and ACL</span>.
+                    </>
+                  ) : (
+                    content.description
+                  )}
                 </motion.p>
                 
                 <motion.div
@@ -90,19 +98,24 @@ const ProgramFeatures = () => {
                 </motion.div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 grid-rows-2 gap-3 max-w-xl ml-auto">
                 {content.images.map((image, idx) => (
                   <motion.div 
                     key={idx}
-                    className={`overflow-hidden rounded-lg ${idx === 0 ? 'col-span-2' : ''}`}
+                    className="overflow-hidden rounded-lg relative"
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{
+                      duration: 0.5, 
+                      delay: 0.2 + idx * 0.1,
+                      hover: { duration: 0.15, delay: 0 }
+                    }}
                   >
                     <img
                       src={image}
                       alt="Conference presentation"
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-44 object-cover transition-transform duration-500"
                     />
                   </motion.div>
                 ))}
@@ -177,12 +190,12 @@ const ProgramFeatures = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <p className="text-white/80 mb-6">
-                In an outstanding recognition of their cutting-edge work, their paper, <span className="font-semibold">Semantic Self-Consistency</span> was featured among 20 state-of-the-art AI research papers in OpenAI's PaperBench. OpenAI handpicked these 20 papers from ICML and NeurIPS and reached out to collaborate with our student author, Tim.
+                In an outstanding recognition of their cutting-edge work, their paper, <span className="text-[#00d2ff]">Semantic Self-Consistency</span> was featured among 20 state-of-the-art AI research papers in <span className="text-[#00d2ff]">OpenAI's PaperBench</span>. OpenAI handpicked these 20 papers from ICML and NeurIPS and reached out to collaborate with our student author, Tim.
               </p>
               <p className="text-white/80 mb-6">
-                Earlier, their paper was also accepted at NeurIPS MATH-AI. Notably, after their NeurIPS presentation, two of the four researchers were admitted to Stanford University.*
+                Earlier, their paper was also accepted at <span className="text-[#00d2ff]">NeurIPS MATH-AI</span>. Notably, after their NeurIPS presentation, two of the four researchers were admitted to <span className="text-[#00d2ff]">Stanford University</span>.*
               </p>
-              <p className="text-sm text-white/60 italic">
+              <p className="text-xs text-white/20">
                 *The other two researchers were 1: already accepted to college at the time they joined the project and 2: based in Germany
               </p>
               
@@ -200,7 +213,7 @@ const ProgramFeatures = () => {
               <div className="relative max-w-md">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] blur-xl opacity-30 rounded-xl"></div>
                 <img 
-                  src="/lovable-uploads/9b224832-ee8b-4edc-9f49-895e3b582416.png" 
+                  src="carousel1.jpeg" 
                   alt="PaperBench" 
                   className="relative z-10 rounded-xl border border-white/20 shadow-xl"
                 />

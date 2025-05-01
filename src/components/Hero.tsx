@@ -34,16 +34,17 @@ const Hero = () => {
             <p className="paragraph text-white/80 max-w-2xl mx-auto lg:mx-0 animate-fade-up" style={{ animationDelay: "200ms" }}>
               An online 12-week professional AI research program for 
               <span className="text-[#00d2ff]"> college and high school students</span>,
-              with mentorship from Ph.D. students and leading AI industry researchers at:
+              with mentorship from <span className="text-[#00d2ff]">Ph.D. students and leading AI industry researchers</span>, 
+              at:
             </p>
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-6 mt-8 animate-fade-up" style={{ animationDelay: "300ms" }}>
               <div className="flex flex-wrap gap-4 md:gap-8 items-center justify-center lg:justify-start">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI" className="h-6 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" className="h-6 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Princeton_University_shield.svg" alt="Princeton" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Cornell_University_seal.svg" alt="Cornell" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/44/University_of_California%2C_San_Diego_seal.svg/1200px-University_of_California%2C_San_Diego_seal.svg.png" alt="UCSD" className="h-8 opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg" alt="UC Berkeley" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Stanford_Cardinal_logo.svg" alt="Stanford" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Cornell_University_seal.svg" alt="Cornell" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg/640px-Seal_of_the_University_of_California%2C_San_Diego.svg.png" alt="UCSD" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
               </div>
             </div>
             
