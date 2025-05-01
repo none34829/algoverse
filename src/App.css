@@ -6,23 +6,23 @@
 }
 
 .tech-gradient {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.8) 0%, rgba(91, 33, 182, 0.9) 100%);
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.8) 0%, rgba(58, 71, 213, 0.9) 100%);
   background-size: 200% 200%;
   animation: gradient 15s ease infinite;
 }
 
 .glass-card {
   backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(209, 213, 219, 0.3);
+  background-color: rgba(5, 0, 23, 0.7);
+  border: 1px solid rgba(4, 220, 251, 0.3);
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  box-shadow: 0 8px 32px rgba(4, 220, 251, 0.15);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+  box-shadow: 0 12px 40px rgba(4, 220, 251, 0.25);
 }
 
 .tech-border {
@@ -33,7 +33,7 @@
   content: "";
   position: absolute;
   inset: -1px;
-  background: linear-gradient(90deg, #7c3aed, #5b21b6, #4c1d95);
+  background: linear-gradient(90deg, #00d2ff, #3a47d5, #00d2ff);
   border-radius: inherit;
   z-index: -1;
   animation: border-animation 4s linear infinite;
@@ -71,21 +71,92 @@
 }
 
 .tech-glow {
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 15px rgba(4, 220, 251, 0.5);
   transition: box-shadow 0.3s ease;
 }
 
 .tech-glow:hover {
-  box-shadow: 0 0 25px rgba(124, 58, 237, 0.8);
+  box-shadow: 0 0 25px rgba(4, 220, 251, 0.8);
 }
 
 .circuit-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%237c3aed' fill-opacity='0.08' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%2300d2ff' fill-opacity='0.08' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 .grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(124, 58, 237, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(4, 220, 251, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(4, 220, 251, 0.05) 1px, transparent 1px);
+}
+
+/* Typing effect */
+.typing-effect::after {
+  content: '|';
+  animation: typing 1.2s infinite step-end;
+}
+
+@keyframes typing {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Code Matrix Animation */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.matrix-digit {
+  color: #00d2ff;
+  text-shadow: 0 0 5px #00d2ff;
+  animation: matrix-rain 3s linear infinite;
+  position: absolute;
+}
+
+/* Shimmer effect for elements */
+.shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(0, 0, 0, 0) 33%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(0, 0, 0, 0) 66%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Neural network connections animation */
+.neural-connection {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 210, 255, 0), rgba(0, 210, 255, 0.7), rgba(0, 210, 255, 0));
+  animation: neural-pulse 3s infinite;
+}
+
+@keyframes neural-pulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }

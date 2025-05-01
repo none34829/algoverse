@@ -14,12 +14,12 @@ const InfoCard: React.FC<InfoCardProps> = ({
       className
     )}>
       {icon && (
-        <div className="mb-4 text-algoverse-600 bg-algoverse-50/50 p-3 rounded-full inline-flex animate-pulse-slow">
+        <div className="mb-4 text-[#00d2ff] bg-[#00d2ff]/10 p-3 rounded-full inline-flex animate-pulse-slow">
           {icon}
         </div>
       )}
-      <h3 className="text-lg font-bold mb-3 bg-gradient-to-r from-algoverse-700 to-algoverse-500 bg-clip-text text-transparent">{title}</h3>
-      <div className="text-gray-600 group-hover:text-gray-800 transition-colors">{children}</div>
+      <h3 className="text-lg font-bold mb-3 bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] bg-clip-text text-transparent">{title}</h3>
+      <div className="text-white/70 group-hover:text-white/90 transition-colors">{children}</div>
     </div>
   );
 };
