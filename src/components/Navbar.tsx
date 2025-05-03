@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import { NavItem } from "@/types";
 import { cn } from "@/lib/utils";
 import { Menu, X, BrainCog } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navItems: NavItem[] = [
-  { label: "Program", href: "#program" },
-  { label: "Research", href: "#research" },
-  { label: "News", href: "#news" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "About", href: "#about" },
+  { label: "Program", href: "/#program" },
+  { label: "Research", href: "/#research" },
+  { label: "News", href: "/#news" },
+  { label: "FAQs", href: "/#faqs" },
+  { label: "About", href: "/about" },
 ];
 
 const Navbar = () => {
@@ -38,12 +39,12 @@ const Navbar = () => {
     >
       <div className="container-inner flex items-center justify-between h-16 md:h-20">
         <div className="flex items-center">
-          <a href="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group">
             <BrainCog size={24} className="mr-2 text-[#00d2ff] group-hover:text-[#3a47d5] transition-colors" />
             <span className="text-xl font-bold bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] bg-clip-text text-transparent font-space">
               Algoverse
             </span>
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -51,22 +52,22 @@ const Navbar = () => {
           <ul className="flex space-x-6">
             {navItems.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className="text-white/80 hover:text-[#00d2ff] font-medium transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-0.5 after:bg-[#00d2ff] after:transition-all"
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
-          <a
-            href="#apply"
+          <Link
+            to="/#apply"
             className="cyber-button px-6 py-2 rounded-md"
           >
             <span className="relative z-10">Apply Now</span>
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -88,23 +89,23 @@ const Navbar = () => {
         <div className="md:hidden backdrop-blur-xl bg-black/70 border-t border-[#00d2ff]/20">
           <div className="container py-4 space-y-3">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 className="block py-2 px-4 text-white/80 hover:text-[#00d2ff] hover:bg-[#00d2ff]/5 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <div className="pt-2 pb-1">
-              <a
-                href="#apply"
+              <Link
+                to="/#apply"
                 className="block text-center bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] text-white py-2 px-4 rounded-md"
                 onClick={() => setIsOpen(false)}
               >
                 Apply Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>
