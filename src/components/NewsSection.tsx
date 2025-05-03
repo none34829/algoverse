@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import ResearchCarousel from "./ResearchCarousel";
 
 const newsItems = [
   {
@@ -32,6 +33,26 @@ const newsItems = [
   }
 ];
 
+// Research paper carousel images with captions
+const paperImages = [
+  {
+    url: "/lovable-uploads/20b1fee6-5dc6-440d-b676-c67cbad67194.png",
+    caption: "Our paper, Semantic Self-Consistency, which was chosen in PaperBench"
+  },
+  {
+    url: "/lovable-uploads/9b224832-ee8b-4edc-9f49-895e3b582416.png",
+    caption: "Tim presenting our research at the NeurIPS conference"
+  },
+  {
+    url: "/lovable-uploads/b1a788b8-da25-4bd6-90fd-b131d74bdf57.png",
+    caption: "The team celebrating after the paper acceptance announcement"
+  },
+  {
+    url: "/lovable-uploads/dda2008b-1fa9-476e-b5be-5dc754a1ca15.png",
+    caption: "Visual representation of the Semantic Self-Consistency model"
+  }
+];
+
 const NewsSection = () => {
   return (
     <section id="news" className="relative py-24">
@@ -48,6 +69,43 @@ const NewsSection = () => {
           <p className="text-white/80">
             Acceptances at top conferences, research collaborations, student successes - here's the latest news.
           </p>
+        </motion.div>
+
+        {/* Featured Paper Carousel */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="glass-card border border-[#00d2ff]/30 rounded-xl overflow-hidden p-6 md:p-10">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold">
+                <span className="text-white">Tim, Ryan, Ayush, and Kaylee's paper was featured in </span>
+                <span className="bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] bg-clip-text text-transparent">OpenAI's PaperBench</span>
+              </h3>
+              <p className="text-white/70 mt-2">
+                In an outstanding recognition of their cutting-edge work, their paper, 
+                <span className="text-[#00d2ff]"> Semantic Self-Consistency</span> was featured among 20 state-of-the-art AI research papers in OpenAI's PaperBench.
+              </p>
+            </div>
+            
+            <div className="my-8">
+              <ResearchCarousel paperImages={paperImages} />
+            </div>
+            
+            <div className="text-center mt-6">
+              <p className="text-white/70 mb-4">
+                Earlier, their paper was also accepted at 
+                <span className="text-[#00d2ff]"> NeurIPS MATH-AI</span>. 
+                Notably, after their NeurIPS presentation, two of the four researchers were admitted to 
+                <span className="text-[#00d2ff]"> Stanford University</span>.
+              </p>
+              <p className="text-white/50 text-sm italic">
+                *The other two researchers were 1: already accepted to college at the time they joined the project and 2: based in Germany
+              </p>
+            </div>
+          </div>
         </motion.div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
