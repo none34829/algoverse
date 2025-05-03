@@ -17,6 +17,13 @@ const ProgramFeatures = () => {
     { src: "carousel4.jpeg", caption: "Our paper, semantic self-consistency, which was chosen in PaperBench" }
   ];
   
+  // Abhay's carousel images
+  const abhayImageData = [
+    { src: "abhay.png", caption: "Abhay presents AAVENUE at EMNLP Positive Impact 2024 in Miami, Florida" },
+    { src: "aavenue.png", caption: "AAVENUE was accepted to NeurIPS HS Track and EMNLP Positive Impact" },
+    { src: "aavenuePage.png", caption: "AAVENUE website: https://aavenue.live/" }
+  ];
+  
   // Custom carousel navigation functions
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + imageData.length) % imageData.length);
@@ -61,7 +68,11 @@ const ProgramFeatures = () => {
     {
       id: 3,
       title: "Publish at Top AI and ML Conferences",
-      description: "Submit novel research to top AI conferences at the program's end, such as NeurIPS, ACL, & EMNLP.",
+      description: (
+        <>
+          Submit novel research to top AI conferences at the program's end, such as <span className="text-[#00d2ff]">NeurIPS, ACL, & EMNLP</span>.
+        </>
+      ),
       image: "vancouver.png",
       icon: "🏆"
     }
@@ -296,12 +307,12 @@ const ProgramFeatures = () => {
         >
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#3a47d5]/20 rounded-full blur-3xl"></div>
           <h3 className="text-2xl md:text-3xl font-bold mb-6">
-          As a high school student, Abhay’s research was accepted to <span className="text-[#00d2ff]">NeurIPS</span> and cited by <span className="text-[#00d2ff]">Microsoft</span>
+          As a high school student, Abhay's research was accepted to <span className="text-[#00d2ff]">NeurIPS</span> and cited by <span className="text-[#00d2ff]">Microsoft</span>
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <p className="text-white/80 mb-6">
-              Abhay’s paper, <span className="text-[#00d2ff]">AAVENUE</span>, was accepted to an <span className="text-[#00d2ff]">EMNLP Workshop</span> and the <span className="text-[#00d2ff]">NeurIPS High School Track</span> (5% acceptance rate). Furthermore, it was cited by researchers at <span className="text-[#00d2ff]">Microsoft, Oxford, University of Washington</span> and other institutions. Abhay came into the program with no prior experience in AI or research.
+              Abhay's paper, <span className="text-[#00d2ff]">AAVENUE</span>, was accepted to an <span className="text-[#00d2ff]">EMNLP Workshop</span> and the <span className="text-[#00d2ff]">NeurIPS High School Track</span> (5% acceptance rate). Furthermore, it was cited by researchers at <span className="text-[#00d2ff]">Microsoft, Oxford, University of Washington</span> and other institutions. Abhay came into the program with no prior experience in AI or research.
               </p>
               <p className="text-white/80 mb-6">
               After Algoverse, Abhay acquired internships at <span className="text-[#00d2ff]">Stanford, MIT, and Harvard</span> (Reference: <span className="text-[#00d2ff]">LinkedIn</span>).
@@ -332,22 +343,22 @@ const ProgramFeatures = () => {
                       }}
                     >
                       <img
-                        src={imageData[currentIndex].src}
-                        alt={`PaperBench image ${currentIndex + 1}`}
+                        src={abhayImageData[currentIndex % abhayImageData.length].src}
+                        alt={`Abhay image ${currentIndex % abhayImageData.length + 1}`}
                         className="w-full h-auto object-cover transition-transform duration-500"
                       />
                     </motion.div>
                     <div className="bg-black/70 backdrop-blur-md p-3 rounded-lg mb-8">
-                      <p className="text-sm text-white">{imageData[currentIndex].caption}</p>
+                      <p className="text-sm text-white">{abhayImageData[currentIndex % abhayImageData.length].caption}</p>
                     </div>
                   </div>
                 </div>
                 <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-                  {imageData.map((_, i) => (
+                  {abhayImageData.map((_, i) => (
                     <button 
                       key={i}
                       onClick={() => setCurrentIndex(i)}
-                      className={`h-2 w-2 rounded-full ${i === currentIndex ? 'bg-[#00d2ff]' : 'bg-[#00d2ff]/30'}`}
+                      className={`h-2 w-2 rounded-full ${i === currentIndex % abhayImageData.length ? 'bg-[#00d2ff]' : 'bg-[#00d2ff]/30'}`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}

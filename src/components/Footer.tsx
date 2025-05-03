@@ -1,4 +1,3 @@
-
 import { BrainCog } from "lucide-react";
 
 const Footer = () => {
@@ -9,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center mb-4 group">
-              <BrainCog size={24} className="mr-2 text-algoverse-400 group-hover:text-algoverse-300" />
+              <img src="/download (11).jpg" alt="Algoverse Logo" className="mr-2 h-7 w-7 object-contain" />
               <h3 className="text-xl font-bold text-white font-serif">Algoverse</h3>
             </div>
             <ul className="space-y-2">

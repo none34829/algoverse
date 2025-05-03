@@ -7,28 +7,28 @@ const newsItems = [
     date: "Apr. 2, 2025",
     title: "Algoverse research paper Cited in OpenAI Research Publication",
     description: "OpenAI features Algoverse research paper in their latest research publication: PaperBench",
-    image: "/lovable-uploads/9b224832-ee8b-4edc-9f49-895e3b582416.png"
+    image: "openailogobanner.png"
   },
   {
     id: 2,
     date: "Mar. 6, 2025",
     title: "Algoverse Research Team Acceptances at NAACL 2025",
     description: "Congratulations to sixteen Algoverse research teams for their acceptances to workshops in NAACL 2025 in Albuquerque, New Mexico!",
-    image: "/lovable-uploads/b1a788b8-da25-4bd6-90fd-b131d74bdf57.png"
+    image: "naaclbanner.png"
   },
   {
     id: 3,
     date: "Oct. 23, 2024",
     title: "Acceptance to NeurIPS Workshops",
     description: "Six Algoverse research teams are accepted to various NeurIPS 2024 Workshops",
-    image: "/lovable-uploads/dda2008b-1fa9-476e-b5be-5dc754a1ca15.png"
+    image: "vancouver_convention_center.png"
   },
   {
     id: 4,
     date: "Jun. 21, 2024",
     title: "Admission to Stanford",
     description: "Congratulations to Ayush Chauhan for being admitted to Stanford!",
-    image: "/lovable-uploads/2246100b-b9cd-4dd1-be22-0f76eb64f6e4.png"
+    image: "stanfordbanner.png"
   }
 ];
 

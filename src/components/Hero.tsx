@@ -1,12 +1,34 @@
-
 import { Button } from "@/components/ui/button";
 import { BrainCog, Sparkle, Zap } from "lucide-react";
+
+// Floating code/math/AI snippets for a unique Hero look
+// (manually positioned for visual appeal)
 
 const Hero = () => {
   return (
     <section className="relative pt-32 pb-20 md:pt-36 md:pb-24 overflow-hidden">
       <div className="absolute inset-0 circuit-pattern opacity-20"></div>
       <div className="absolute inset-0 grid-pattern"></div>
+      
+      {/* Floating code/math/AI elements - custom positions for visual appeal */}
+      <div className="absolute left-[70%] top-[12%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+      from sklearn.model_selection import train_test_split
+      </div>
+      <div className="absolute left-[85%] top-[20%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+        vector = np.zeros((n, 1))
+      </div>
+      <div className="absolute left-[45%] top-[22%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+      from transformers import BertModel
+      </div>
+      <div className="absolute left-[12%] top-[95%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+      loss = nn.CrossEntropyLoss()
+      </div>
+      <div className="absolute left-[75%] top-[87%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+        y = model.predict(X_test)
+      </div>
+      <div className="absolute left-[30%] top-[80%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+        history = model.fit(X_train, y_train, epochs=10)
+      </div>
       
       {/* Animated glowing orb */}
       <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-[#00d2ff]/20 to-[#3a47d5]/20 blur-[100px] animate-pulse-slow"></div>
