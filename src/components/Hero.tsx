@@ -40,11 +40,21 @@ const Hero = () => {
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-6 mt-8 animate-fade-up" style={{ animationDelay: "300ms" }}>
               <div className="flex flex-wrap gap-4 md:gap-8 items-center justify-center lg:justify-start">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Seal_of_University_of_California%2C_Berkeley.svg" alt="UC Berkeley" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Stanford_Cardinal_logo.svg" alt="Stanford" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Cornell_University_seal.svg" alt="Cornell" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg/640px-Seal_of_the_University_of_California%2C_San_Diego.svg.png" alt="UCSD" className="h-12 opacity-80 hover:opacity-100 transition-opacity" />
+                <div className="h-10 w-32 flex items-center justify-center">
+                  <img src="/metawhite.png" alt="Meta" className="max-h-full max-w-full opacity-80 hover:opacity-100 transition-opacity object-contain" />
+                </div>
+                <div className="h-10 w-32 flex items-center justify-center">
+                  <img src="/berkeleywhite.png" alt="UC Berkeley" className="max-h-full max-w-full scale-[1.8] opacity-80 hover:opacity-100 transition-opacity object-contain" />
+                </div>
+                <div className="h-10 w-32 flex items-center justify-center">
+                  <img src="/stanfordwhite.png" alt="Stanford" className="max-h-full max-w-full opacity-80 hover:opacity-100 transition-opacity object-contain" />
+                </div>
+                <div className="h-10 w-32 flex items-center justify-center">
+                  <img src="/cornell.png" alt="Cornell" className="max-h-full max-w-full opacity-80 hover:opacity-100 transition-opacity object-contain" />
+                </div>
+                <div className="h-10 w-32 flex items-center justify-center">
+                  <img src="/ucsdwhite.png" alt="UCSD" className="max-h-full max-w-full opacity-80 hover:opacity-100 transition-opacity object-contain" />
+                </div>
               </div>
             </div>
             

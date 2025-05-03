@@ -12,7 +12,7 @@ const teamMembers = [
       "NeurIPS Area Chair & Reviewer",
       "30+ top conference papers, 5000+ citations"
     ],
-    image: "/lovable-uploads/9b224832-ee8b-4edc-9f49-895e3b582416.png"
+    image: "vasu.png"
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const teamMembers = [
       "AI Resident at Meta",
       "UC Berkeley AI Research"
     ],
-    image: "/lovable-uploads/9e0cf913-ba11-4e1b-979b-dff08f5b392a.png"
+    image: "sean.png"
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const teamMembers = [
       "Quant Researcher at Citadel",
       "Berkeley AI Research"
     ],
-    image: "/lovable-uploads/78869e89-1079-4600-9fa0-94906c1e275a.png"
+    image: "kevin.png"
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const teamMembers = [
       "AI Resident at Intel",
       "Harvard AI Research"
     ],
-    image: "/lovable-uploads/2246100b-b9cd-4dd1-be22-0f76eb64f6e4.png"
+    image: "celine.png"
   }
 ];
 
