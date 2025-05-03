@@ -173,12 +173,12 @@ const ProgramFeatures = () => {
         </Carousel>
       </div>
       
-      {/* Featured success stories - side by side */}
+      {/* Featured success stories - vertical layout with PaperBench first, then Abhay's research */}
       <div className="container-inner mt-24">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-8">
           {/* Tim, Ryan, Ayush, and Kaylee's paper */}
           <motion.div
-            className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden h-full"
+            className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden w-full"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -227,7 +227,7 @@ const ProgramFeatures = () => {
           
           {/* Abhay's research card */}
           <motion.div
-            className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden h-full"
+            className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden w-full"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
