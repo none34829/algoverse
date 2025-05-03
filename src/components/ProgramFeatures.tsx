@@ -173,43 +173,44 @@ const ProgramFeatures = () => {
         </Carousel>
       </div>
       
-      {/* Featured success story */}
+      {/* Featured success stories - side by side */}
       <div className="container-inner mt-24">
-        <motion.div
-          className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#3a47d5]/20 rounded-full blur-3xl"></div>
-          
-          <h3 className="text-2xl md:text-3xl font-bold mb-6">
-            Tim, Ryan, Ayush, and Kaylee's paper was featured in <span className="text-[#00d2ff]">OpenAI's PaperBench</span>
-          </h3>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-white/80 mb-6">
-                In an outstanding recognition of their cutting-edge work, their paper, <span className="text-[#00d2ff]">Semantic Self-Consistency</span> was featured among 20 state-of-the-art AI research papers in <span className="text-[#00d2ff]">OpenAI's PaperBench</span>. OpenAI handpicked these 20 papers from ICML and NeurIPS and reached out to collaborate with our student author, Tim.
-              </p>
-              <p className="text-white/80 mb-6">
-                Earlier, their paper was also accepted at <span className="text-[#00d2ff]">NeurIPS MATH-AI</span>. Notably, after their NeurIPS presentation, two of the four researchers were admitted to <span className="text-[#00d2ff]">Stanford University</span>.*
-              </p>
-              <p className="text-xs text-white/20">
-                *The other two researchers were 1: already accepted to college at the time they joined the project and 2: based in Germany
-              </p>
-              
-              <div className="mt-6">
-                <a href="#research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
-                  <span>Read More Publications</span>
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Tim, Ryan, Ayush, and Kaylee's paper */}
+          <motion.div
+            className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#3a47d5]/20 rounded-full blur-3xl"></div>
+            
+            <h3 className="text-2xl font-bold mb-6">
+              Tim, Ryan, Ayush, and Kaylee's paper was featured in <span className="text-[#00d2ff]">OpenAI's PaperBench</span>
+            </h3>
+            
+            <p className="text-white/80 mb-6">
+              In an outstanding recognition of their cutting-edge work, their paper, <span className="text-[#00d2ff]">Semantic Self-Consistency</span> was featured among 20 state-of-the-art AI research papers in <span className="text-[#00d2ff]">OpenAI's PaperBench</span>. OpenAI handpicked these 20 papers from ICML and NeurIPS and reached out to collaborate with our student author, Tim.
+            </p>
+            
+            <p className="text-white/80 mb-6">
+              Earlier, their paper was also accepted at <span className="text-[#00d2ff]">NeurIPS MATH-AI</span>. Notably, after their NeurIPS presentation, two of the four researchers were admitted to <span className="text-[#00d2ff]">Stanford University</span>.*
+            </p>
+            
+            <p className="text-xs text-white/20">
+              *The other two researchers were 1: already accepted to college at the time they joined the project and 2: based in Germany
+            </p>
+            
+            <div className="mt-6">
+              <a href="#research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
+                <span>Read More Publications</span>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
             </div>
             
-            <div className="flex justify-center items-center">
+            <div className="mt-8">
               <div className="relative max-w-md">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] blur-xl opacity-30 rounded-xl"></div>
                 <img 
@@ -222,8 +223,57 @@ const ProgramFeatures = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+          
+          {/* Abhay's research card */}
+          <motion.div
+            className="glass-card border border-[#00d2ff]/30 rounded-xl p-8 relative overflow-hidden h-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#3a47d5]/20 rounded-full blur-3xl"></div>
+            
+            <h3 className="text-2xl font-bold mb-6">
+              As a high school student, Abhay's research was <span className="text-[#00d2ff]">accepted to NeurIPS</span> and cited by Microsoft
+            </h3>
+            
+            <p className="text-white/80 mb-6">
+              Abhay's paper, <span className="text-[#00d2ff]">AAVENUE</span>, was accepted to an EMNLP Workshop and the NeurIPS High School Track (5% acceptance rate). Furthermore, it was cited by researchers at Microsoft, Oxford, University of Washington, and other institutions.
+            </p>
+            
+            <p className="text-white/80 mb-6">
+              Abhay came into the program with <span className="text-[#00d2ff]">no prior experience</span> in AI or research.
+            </p>
+            
+            <p className="text-white font-medium mb-6">
+              After Algoverse, Abhay acquired internships at <span className="text-[#00d2ff]">Stanford, MIT, and Harvard</span>.
+            </p>
+            
+            <div className="mt-6">
+              <a href="#research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
+                <span>Read More Publications</span>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
+            
+            <div className="mt-8">
+              <div className="relative max-w-md">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] blur-xl opacity-30 rounded-xl"></div>
+                <img 
+                  src="/lovable-uploads/9e0cf913-ba11-4e1b-979b-dff08f5b392a.png" 
+                  alt="Abhay presenting at EMNLP" 
+                  className="relative z-10 rounded-xl border border-white/20 shadow-xl"
+                />
+                <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-md p-3 rounded-lg border border-white/10 z-20">
+                  <p className="text-sm">Abhay presents AAVENUE at EMNLP Positive Impact 2024 in Miami, Florida</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
