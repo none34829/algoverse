@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, FileText, ExternalLink } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const teamMembers = [
   {
@@ -153,14 +154,16 @@ const ExpandedTeamSection = () => {
                   </div>
                   
                   <div className="p-4">
-                    <ul className="space-y-1 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {member.credentials.map((credential, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-[#00d2ff] mr-2">•</span>
-                          <span className="text-sm text-white/80">{credential}</span>
-                        </li>
+                        <span 
+                          key={idx} 
+                          className="inline-block px-3 py-1 rounded-full text-xs bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/30"
+                        >
+                          {credential}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                     
                     <div className="flex gap-2 pt-2">
                       {member.links.map((link, idx) => (
@@ -221,12 +224,14 @@ const ExpandedTeamSection = () => {
                         ))}
                       </div>
                       
-                      <div className="space-y-1 mb-6">
+                      <div className="flex flex-col gap-2 mb-6">
                         {member.credentials.map((credential, idx) => (
-                          <div key={idx} className="flex items-start">
-                            <span className="text-[#00d2ff] mr-2">•</span>
-                            <span className="text-sm text-white/80">{credential}</span>
-                          </div>
+                          <span 
+                            key={idx} 
+                            className="inline-block px-3 py-1 rounded-full text-sm bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/30"
+                          >
+                            {credential}
+                          </span>
                         ))}
                       </div>
                     </div>
