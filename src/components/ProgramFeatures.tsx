@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import type { EmblaCarouselType } from "embla-carousel";
 
 const ProgramFeatures = () => {
   // Create a separate carousel ref for each carousel
@@ -8,6 +9,17 @@ const ProgramFeatures = () => {
   const featuredCarouselRef = useRef(null);
   
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [benefitsApi, setBenefitsApi] = useState<EmblaCarouselType>();
+  const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
+  
+  // Connect to Embla Carousel API for benefits carousel
+  useEffect(() => {
+    if (benefitsApi) {
+      benefitsApi.on("select", () => {
+        setCurrentBenefitIndex(benefitsApi.selectedScrollSnap());
+      });
+    }
+  }, [benefitsApi]);
   
   // Image data with captions
   const imageData = [
@@ -165,6 +177,7 @@ const ProgramFeatures = () => {
             align: "start",
             loop: true,
           }}
+          setApi={setBenefitsApi}
         >
           <CarouselContent className="py-4">
             {programBenefits.map((benefit, index) => (
@@ -197,7 +210,22 @@ const ProgramFeatures = () => {
             ))}
           </CarouselContent>
           
-          <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-2 mt-4">
+          {/* Indicator bubbles - ONLY shown on smaller screens */}
+          <div className="block lg:hidden mt-4 mb-2">
+            <div className="flex justify-center gap-2">
+              {programBenefits.map((_, index) => (
+                <button 
+                  key={index}
+                  onClick={() => benefitsApi?.scrollTo(index)}
+                  className={`h-2 w-2 rounded-full transition-colors ${index === currentBenefitIndex ? 'bg-[#00d2ff]' : 'bg-[#00d2ff]/30'}`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+          
+          {/* Navigation arrows - ONLY shown on smaller screens */}
+          <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-2 mt-4 lg:hidden">
             <CarouselPrevious className="relative h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
             <CarouselNext className="relative h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
           </div>
