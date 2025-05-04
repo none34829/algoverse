@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProgramInfo from "@/components/ProgramInfo";
 import ResearchHighlights from "@/components/ResearchHighlights";
+import ResearchCitations from "@/components/ResearchCitations";
 import ProgramFeatures from "@/components/ProgramFeatures"; 
 import SuccessStories from "@/components/SuccessStories";
 import TeamSection from "@/components/TeamSection";
@@ -106,6 +107,7 @@ const Index = () => {
           <ProgramFeatures />
           <ProgramInfo />
           <ResearchHighlights />
+          <ResearchCitations />
           <SuccessStories />
           <TeamSection />
           <NewsSection />
