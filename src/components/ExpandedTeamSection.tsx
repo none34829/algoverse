@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Linkedin, FileText, ExternalLink } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 
 const teamMembers = [
   {
@@ -135,39 +134,38 @@ const ExpandedTeamSection = () => {
               {teamMembers.map((member, index) => (
                 <motion.div 
                   key={member.id}
-                  className="glass-card rounded-xl overflow-hidden group transition-all duration-300 border border-[#00d2ff]/20 hover:border-[#00d2ff]/40"
+                  className="glass-card border border-[#00d2ff]/30 rounded-xl overflow-hidden group hover:border-[#00d2ff]/60 transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="relative h-56 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050017]/90 via-[#050017]/50 to-transparent z-10"></div>
+                  <div className="relative h-64 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
                     <img 
                       src={member.image} 
                       alt={member.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
                       <h3 className="text-xl font-bold text-white">{member.name}</h3>
                       <p className="text-[#00d2ff]">{member.role}</p>
                     </div>
                   </div>
                   
-                  <div className="p-5">
+                  <div className="p-4">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {member.credentials.map((credential, idx) => (
-                        <Badge 
+                        <span 
                           key={idx} 
-                          variant="outline"
-                          className="bg-[#050017] border-[#00d2ff]/30 text-[#00d2ff] rounded-md text-xs whitespace-normal"
+                          className="inline-block px-3 py-1 rounded-full text-xs bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/30"
                         >
                           {credential}
-                        </Badge>
+                        </span>
                       ))}
                     </div>
                     
-                    <div className="flex gap-2 pt-2 border-t border-[#00d2ff]/20">
+                    <div className="flex gap-2 pt-2">
                       {member.links.map((link, idx) => (
                         <a 
                           key={idx}
@@ -192,7 +190,7 @@ const ExpandedTeamSection = () => {
               {teamMembers.map((member, index) => (
                 <motion.div 
                   key={member.id}
-                  className="glass-card border border-[#00d2ff]/20 hover:border-[#00d2ff]/40 rounded-xl overflow-hidden p-6 md:p-8"
+                  className="glass-card border border-[#00d2ff]/30 rounded-xl overflow-hidden p-6 md:p-8"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -200,7 +198,7 @@ const ExpandedTeamSection = () => {
                 >
                   <div className="flex flex-col md:flex-row gap-8">
                     <div className="md:w-1/3 lg:w-1/4 flex-shrink-0">
-                      <div className="relative rounded-xl overflow-hidden mb-4 aspect-square border-2 border-[#00d2ff]/40">
+                      <div className="relative rounded-xl overflow-hidden mb-4 aspect-[3/4] tech-glow">
                         <img 
                           src={member.image} 
                           alt={member.name}
@@ -228,13 +226,12 @@ const ExpandedTeamSection = () => {
                       
                       <div className="flex flex-col gap-2 mb-6">
                         {member.credentials.map((credential, idx) => (
-                          <Badge 
+                          <span 
                             key={idx} 
-                            variant="outline"
-                            className="bg-[#050017] border-[#00d2ff]/30 text-[#00d2ff] justify-start whitespace-normal rounded-md py-1.5"
+                            className="inline-block px-3 py-1 rounded-full text-sm bg-[#00d2ff]/10 text-[#00d2ff] border border-[#00d2ff]/30"
                           >
                             {credential}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
                     </div>
