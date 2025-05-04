@@ -1,21 +1,21 @@
 
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Award, Star } from "lucide-react";
+import { Award, BookOpen } from "lucide-react";
 
 const ResearchCitations = () => {
   // List of institutions that have cited Algoverse research
   const institutions = [
-    { name: "Open AI", logo: "openai-logo.svg", tier: "platinum" },
-    { name: "Microsoft", logo: "microsoft-logo.svg", tier: "platinum" },
-    { name: "Princeton", logo: "princeton-logo.svg", tier: "gold" },
-    { name: "MIT", logo: "mit-logo.svg", tier: "gold" },
-    { name: "Oxford", logo: "oxford-logo.svg", tier: "gold" },
-    { name: "University of Washington", logo: "uw-logo.svg", tier: "silver" },
-    { name: "NIH Research", logo: "nih-logo.svg", tier: "silver" },
-    { name: "Hewlett Packard", logo: "hp-logo.svg", tier: "silver" },
-    { name: "Allen Turing Institute", logo: "turing-logo.svg", tier: "silver" },
-    { name: "Mount Sinai", logo: "mountsinai-logo.svg", tier: "silver" },
+    { name: "Open AI", logo: "/lovable-uploads/b1a788b8-da25-4bd6-90fd-b131d74bdf57.png" },
+    { name: "Microsoft", logo: "/lovable-uploads/9e0cf913-ba11-4e1b-979b-dff08f5b392a.png" },
+    { name: "Princeton", logo: "/lovable-uploads/dda2008b-1fa9-476e-b5be-5dc754a1ca15.png" },
+    { name: "MIT", logo: "/lovable-uploads/78869e89-1079-4600-9fa0-94906c1e275a.png" },
+    { name: "Oxford", logo: "/lovable-uploads/9b224832-ee8b-4edc-9f49-895e3b582416.png" },
+    { name: "University of Washington", logo: "/lovable-uploads/2246100b-b9cd-4dd1-be22-0f76eb64f6e4.png" },
+    { name: "NIH Research", logo: "/lovable-uploads/7418245b-43c9-472d-8cb3-122f92091848.png" },
+    { name: "Hewlett Packard", logo: "/lovable-uploads/c1f7044b-4820-43f9-befe-52cd5a21e92e.png" },
+    { name: "Allen Turing Institute", logo: "/lovable-uploads/6831573d-ebe2-4ce4-99fb-117da105f4e1.png" },
+    { name: "Mount Sinai", logo: "/placeholder.svg" },
   ];
 
   return (
@@ -49,9 +49,9 @@ const ResearchCitations = () => {
           transition={{ duration: 0.5 }}
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Trophy size={28} className="text-[#FFD700]" />
+            <BookOpen size={28} className="text-[#00d2ff]" />
             <h2 className="heading-lg mb-0 bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] bg-clip-text text-transparent">Global Research Impact</h2>
-            <Trophy size={28} className="text-[#FFD700]" />
+            <BookOpen size={28} className="text-[#00d2ff]" />
           </div>
           
           <p className="paragraph text-white/80 max-w-3xl mx-auto">
@@ -65,112 +65,44 @@ const ResearchCitations = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="glass-card border border-[#00d2ff]/30 p-10 rounded-xl backdrop-blur-sm"
         >
-          {/* Platinum tier */}
-          <div className="mb-10">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#E5E4E2]"></div>
-              <Badge variant="glow" className="px-4 py-1.5 text-sm font-medium bg-[#E5E4E2]/10 text-white border-[#E5E4E2] flex items-center gap-2">
-                <Star size={16} className="fill-[#E5E4E2] text-transparent" />
-                <span>Platinum Citations</span>
-                <Star size={16} className="fill-[#E5E4E2] text-transparent" />
-              </Badge>
-              <div className="h-[1px] w-12 bg-gradient-to-r from-[#E5E4E2] to-transparent"></div>
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {institutions
-                .filter(institution => institution.tier === "platinum")
-                .map((institution, index) => (
-                  <motion.div
-                    key={institution.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <Badge 
-                      variant="glow" 
-                      className="px-5 py-2.5 text-base font-medium border-[#E5E4E2]/50 shadow-[0_0_15px_rgba(229,228,226,0.3)] backdrop-blur-md"
-                    >
-                      {institution.name}
-                    </Badge>
-                  </motion.div>
-                ))}
-            </div>
-          </div>
-          
-          {/* Gold tier */}
-          <div className="mb-10">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#FFD700]"></div>
-              <Badge variant="glow" className="px-4 py-1.5 text-sm font-medium bg-[#FFD700]/10 text-white border-[#FFD700] flex items-center gap-2">
-                <Award size={16} className="text-[#FFD700]" />
-                <span>Gold Citations</span>
-                <Award size={16} className="text-[#FFD700]" />
-              </Badge>
-              <div className="h-[1px] w-12 bg-gradient-to-r from-[#FFD700] to-transparent"></div>
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {institutions
-                .filter(institution => institution.tier === "gold")
-                .map((institution, index) => (
-                  <motion.div
-                    key={institution.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <Badge 
-                      variant="glow" 
-                      className="px-4 py-2 text-base font-medium border-[#FFD700]/50 shadow-[0_0_15px_rgba(255,215,0,0.3)]"
-                    >
-                      {institution.name}
-                    </Badge>
-                  </motion.div>
-                ))}
-            </div>
-          </div>
-          
-          {/* Silver tier */}
-          <div>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#C0C0C0]"></div>
-              <Badge variant="glow" className="px-4 py-1.5 text-sm font-medium bg-[#C0C0C0]/10 text-white border-[#C0C0C0] flex items-center gap-2">
-                <Award size={16} className="text-[#C0C0C0]" />
-                <span>Silver Citations</span>
-                <Award size={16} className="text-[#C0C0C0]" />
-              </Badge>
-              <div className="h-[1px] w-12 bg-gradient-to-r from-[#C0C0C0] to-transparent"></div>
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {institutions
-                .filter(institution => institution.tier === "silver")
-                .map((institution, index) => (
-                  <motion.div
-                    key={institution.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <Badge 
-                      variant="glow" 
-                      className="px-4 py-2 text-base font-medium border-[#C0C0C0]/50 shadow-[0_0_10px_rgba(192,192,192,0.3)]"
-                    >
-                      {institution.name}
-                    </Badge>
-                  </motion.div>
-                ))}
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            {institutions.map((institution, index) => (
+              <motion.div
+                key={institution.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="flex flex-col items-center justify-center gap-4"
+              >
+                <div className="h-20 flex items-center justify-center mb-2">
+                  <img 
+                    src={institution.logo} 
+                    alt={`${institution.name} logo`} 
+                    className="max-h-full max-w-full object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-all duration-300"
+                  />
+                </div>
+                <Badge 
+                  variant="glow" 
+                  className="px-4 py-2 text-sm font-medium border-[#00d2ff]/50 shadow-[0_0_15px_rgba(0,210,255,0.3)] backdrop-blur-md text-center w-full"
+                >
+                  {institution.name}
+                </Badge>
+              </motion.div>
+            ))}
           </div>
           
           <motion.div 
-            className="mt-10 text-center"
+            className="mt-12 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <p className="text-white/70 text-sm italic">
+            <div className="flex items-center justify-center gap-2">
+              <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#00d2ff]"></div>
+              <Award size={18} className="text-[#00d2ff]" />
+              <div className="h-[1px] w-12 bg-gradient-to-r from-[#00d2ff] to-transparent"></div>
+            </div>
+            <p className="text-white/70 text-sm italic mt-4">
               Research citations from these prestigious institutions validate the exceptional quality and real-world impact of our program's output.
             </p>
           </motion.div>
