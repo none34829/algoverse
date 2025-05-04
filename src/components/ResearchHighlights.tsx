@@ -127,7 +127,7 @@ const ResearchHighlights = () => {
                 {/* 3D Network Visualization Mockup */}
                 <div className="relative h-[300px] rounded-lg overflow-hidden backdrop-blur-sm border border-[#00d2ff]/30">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-2xl font-bold text-white/40">Network Visualization</div>
+                    <div className="text-2xl font-bold text-white/40">Visualization Coming Soon</div>
                   </div>
                   
                   {/* Nodes and connections */}

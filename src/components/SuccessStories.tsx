@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const SuccessStories = () => {
-  const carouselRef = useRef(null);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   
   const stories = [
     {
@@ -44,6 +48,33 @@ const SuccessStories = () => {
     }
   ];
 
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+  
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+ 
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+ 
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
     <section id="success-stories" className="relative py-24">
       <div className="container-inner">
@@ -62,9 +93,9 @@ const SuccessStories = () => {
         {/* Removed spotlight section so all testimonials are in the carousel below */}
         
         {/* Testimonial carousel */}
-        <div className="mt-16">
+        <div className="mt-16 relative">
           <Carousel
-            ref={carouselRef}
+            setApi={setApi}
             className="w-full"
             opts={{
               align: "start",
@@ -115,10 +146,39 @@ const SuccessStories = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="absolute -bottom-10 left-0 right-0 flex justify-center gap-2 mt-4">
-              <CarouselPrevious className="relative h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
-              <CarouselNext className="relative h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
+            
+            {/* Side navigation arrows - hidden on mobile */}
+            <div className="hidden md:block">
+              <CarouselPrevious className="absolute left-[-3.5rem] top-[35%] -translate-y-1/2 h-10 w-10 
+                rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
+              <CarouselNext className="absolute right-[-3.5rem] top-[35%] -translate-y-1/2 h-10 w-10 
+                rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
             </div>
+            
+            {/* Indicator bubbles - shown for all screens */}
+            <div className="mt-8 flex justify-center gap-2">
+              {Array.from({ length: count }).map((_, i) => (
+                <button
+                  key={i}
+                  className={`h-2.5 w-2.5 rounded-full transition-all ${
+                    current === i 
+                      ? "bg-[#00d2ff] scale-125" 
+                      : "bg-[#00d2ff]/30 hover:bg-[#00d2ff]/50"
+                  }`}
+                  onClick={() => api?.scrollTo(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+            
+            {/* Mobile navigation - only shown on mobile */}
+            {isMobile && (
+              <div className="flex justify-center items-center gap-2">
+                <CarouselPrevious className="relative h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
+                <CarouselNext className="relative h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
+              </div>
+            )}
+            
             <div className="flex justify-center mt-16">
               <a href="#testimonials" className="cyber-button px-8 py-3 rounded-lg inline-flex items-center gap-2 font-semibold text-lg">
                 <span>Read More Testimonials</span>

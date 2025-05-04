@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 const navItems: NavItem[] = [
    { label: "Program", href: "/#program" },
    { label: "Research", href: "/#research" },
-   { label: "News", href: "/#news" },
-   { label: "FAQs", href: "/#faqs" },
+   { label: "News", href: "/news" },
+   { label: "FAQs", href: "/faq" },
    { label: "About", href: "/about" },
 ];
 
@@ -63,7 +63,9 @@ const Navbar = () => {
           </ul>
 
           <Link
-            to="/#apply"
+            to="https://algoverse.paperform.co/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="cyber-button px-6 py-2 rounded-md"
           >
             <span className="relative z-10">Apply Now</span>
@@ -100,7 +102,9 @@ const Navbar = () => {
             ))}
             <div className="pt-2 pb-1">
               <Link
-                to="/#apply"
+                to="https://algoverse.paperform.co/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center bg-gradient-to-r from-[#00d2ff] to-[#3a47d5] text-white py-2 px-4 rounded-md"
                 onClick={() => setIsOpen(false)}
               >

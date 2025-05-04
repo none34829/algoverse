@@ -41,16 +41,31 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Organization</h3>
             <ul className="space-y-2">
-              {["Program", "Research", "News", "FAQ", "About Us"].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase().replace(' ', '-')}`} 
-                    className="text-gray-400 hover:text-white transition-colors relative pl-0 hover:pl-2 duration-300"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a href="/#program" className="text-gray-400 hover:text-white transition-colors relative pl-0 hover:pl-2 duration-300">
+                  Program
+                </a>
+              </li>
+              <li>
+                <a href="/#research" className="text-gray-400 hover:text-white transition-colors relative pl-0 hover:pl-2 duration-300">
+                  Research
+                </a>
+              </li>
+              <li>
+                <a href="/news" className="text-gray-400 hover:text-white transition-colors relative pl-0 hover:pl-2 duration-300">
+                  News
+                </a>
+              </li>
+              <li>
+                <a href="/faq" className="text-gray-400 hover:text-white transition-colors relative pl-0 hover:pl-2 duration-300">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-gray-400 hover:text-white transition-colors relative pl-0 hover:pl-2 duration-300">
+                  About Us
+                </a>
+              </li>
             </ul>
           </div>
           

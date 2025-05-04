@@ -11,23 +11,14 @@ const Hero = () => {
       <div className="absolute inset-0 grid-pattern"></div>
       
       {/* Floating code/math/AI elements - custom positions for visual appeal */}
-      <div className="absolute left-[70%] top-[12%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
-      from sklearn.model_selection import train_test_split
-      </div>
-      <div className="absolute left-[85%] top-[20%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
-        vector = np.zeros((n, 1))
-      </div>
-      <div className="absolute left-[45%] top-[22%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
+      <div className="absolute left-[12%] top-[95%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
       from transformers import BertModel
       </div>
-      <div className="absolute left-[12%] top-[95%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
-      loss = nn.CrossEntropyLoss()
-      </div>
       <div className="absolute left-[75%] top-[87%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
-        y = model.predict(X_test)
+      history = model.fit(X_train, y_train, epochs=10)
       </div>
       <div className="absolute left-[30%] top-[80%] font-mono text-xs text-[#00d2ff]/80 bg-black/20 backdrop-blur-sm px-3 py-1 rounded border border-[#00d2ff]/20 animate-float z-10">
-        history = model.fit(X_train, y_train, epochs=10)
+       from sklearn.model_selection import train_test_split
       </div>
       
       {/* Animated glowing orb */}
@@ -82,7 +73,9 @@ const Hero = () => {
             
             <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up" style={{ animationDelay: "400ms" }}>
               <a 
-                href="#apply" 
+                href="https://algoverse.paperform.co/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cyber-button py-4 px-8 rounded-lg flex items-center justify-center gap-2"
               >
                 <span>Apply Here</span>

@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProgramInfo from "@/components/ProgramInfo";
 import ResearchHighlights from "@/components/ResearchHighlights";
+import ResearchCitations from "@/components/ResearchCitations";
 import ProgramFeatures from "@/components/ProgramFeatures"; 
 import SuccessStories from "@/components/SuccessStories";
 import TeamSection from "@/components/TeamSection";
@@ -104,8 +105,9 @@ const Index = () => {
         <div className="relative">
           <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-transparent to-[#050017]/80 z-10"></div>
           <ProgramFeatures />
-          <ProgramInfo />
+          <ResearchCitations />
           <ResearchHighlights />
+          <ProgramInfo />
           <SuccessStories />
           <TeamSection />
           <NewsSection />

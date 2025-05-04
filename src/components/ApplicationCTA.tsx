@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Calendar, CheckCircle, Star } from "lucide-react";
 
@@ -117,7 +116,9 @@ const ApplicationCTA = () => {
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
                   <a 
-                    href="#apply-form" 
+                    href="https://algoverse.paperform.co/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="cyber-button inline-block py-4 px-10 rounded-lg text-white font-bold text-lg relative overflow-hidden group"
                   >
                     <span className="relative z-10">Apply Here</span>

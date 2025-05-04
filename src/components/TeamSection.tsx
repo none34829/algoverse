@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 
 const teamMembers = [
@@ -74,11 +73,11 @@ const TeamSection = () => {
           </motion.p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-0">
           {teamMembers.map((member, index) => (
             <motion.div 
               key={member.id}
-              className="glass-card border border-[#00d2ff]/30 rounded-xl overflow-hidden group hover:border-[#00d2ff]/60 transition-all duration-300"
+              className="glass-card border border-[#00d2ff]/30 rounded-xl overflow-hidden group hover:border-[#00d2ff]/60 transition-all duration-300 w-full"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -113,10 +112,10 @@ const TeamSection = () => {
         <div className="mt-12 text-center">
           <a 
             href="#about-us"
-            className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors"
+            className="cyber-button px-6 py-2 rounded-md inline-flex items-center gap-2"
           >
-            <span>About Us</span>
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <span className="relative z-10">About Us</span>
+            <svg className="w-4 h-4 relative z-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>

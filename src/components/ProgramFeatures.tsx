@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useRef, useState, useEffect } from "react";
 import type { EmblaCarouselType } from "embla-carousel";
@@ -7,10 +7,16 @@ const ProgramFeatures = () => {
   // Create a separate carousel ref for each carousel
   const benefitsCarouselRef = useRef(null);
   const featuredCarouselRef = useRef(null);
+  const paperBenchCarouselRef = useRef(null);
+  const abhayCarouselRef = useRef(null);
   
   const [currentIndex, setCurrentIndex] = useState(0);
   const [benefitsApi, setBenefitsApi] = useState<EmblaCarouselType>();
+  const [paperBenchApi, setPaperBenchApi] = useState<EmblaCarouselType>();
+  const [abhayApi, setAbhayApi] = useState<EmblaCarouselType>();
   const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
+  const [currentPaperBenchIndex, setCurrentPaperBenchIndex] = useState(0);
+  const [currentAbhayIndex, setCurrentAbhayIndex] = useState(0);
   
   // Connect to Embla Carousel API for benefits carousel
   useEffect(() => {
@@ -20,6 +26,24 @@ const ProgramFeatures = () => {
       });
     }
   }, [benefitsApi]);
+  
+  // Connect to Embla Carousel API for PaperBench carousel
+  useEffect(() => {
+    if (paperBenchApi) {
+      paperBenchApi.on("select", () => {
+        setCurrentPaperBenchIndex(paperBenchApi.selectedScrollSnap());
+      });
+    }
+  }, [paperBenchApi]);
+  
+  // Connect to Embla Carousel API for Abhay carousel
+  useEffect(() => {
+    if (abhayApi) {
+      abhayApi.on("select", () => {
+        setCurrentAbhayIndex(abhayApi.selectedScrollSnap());
+      });
+    }
+  }, [abhayApi]);
   
   // Image data with captions
   const imageData = [
@@ -265,61 +289,60 @@ const ProgramFeatures = () => {
               </div>
             </div>
             <div className="flex justify-center items-center">
-              {/* Custom carousel implementation using state instead of the Carousel component */}
-              <div className="w-full relative">
-                <div className="py-4">
-                  <div className="w-full flex flex-col items-center">
-                    <motion.div
-                      className="overflow-hidden rounded-lg relative max-w-xs mb-2"
-                      key={currentIndex}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{
-                        duration: 0.5,
-                        ease: 'easeInOut'
-                      }}
-                    >
-                      <img
-                        src={imageData[currentIndex].src}
-                        alt={`PaperBench image ${currentIndex + 1}`}
-                        className="w-full h-auto object-cover transition-transform duration-500"
-                      />
-                    </motion.div>
-                    <div className="bg-black/70 backdrop-blur-md p-3 rounded-lg mb-8">
-                      <p className="text-sm text-white">{imageData[currentIndex].caption}</p>
+              {/* PaperBench Carousel - using the Carousel component */}
+              <div className="w-full max-w-xs">
+                <Carousel
+                  ref={paperBenchCarouselRef}
+                  setApi={setPaperBenchApi}
+                  opts={{
+                    align: "center",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {imageData.map((image, index) => (
+                      <CarouselItem key={index} className="basis-full">
+                        <div className="relative h-[280px] overflow-hidden rounded-lg bg-black/40">
+                          <img
+                            src={image.src}
+                            alt={`PaperBench image ${index + 1}`}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  
+                  {/* Navigation arrows */}
+                  <div className="absolute -left-4 top-1/2 -translate-y-1/2">
+                    <CarouselPrevious className="h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
                     </div>
+                  <div className="absolute -right-4 top-1/2 -translate-y-1/2">
+                    <CarouselNext className="h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
                   </div>
+                </Carousel>
+                
+                {/* Caption */}
+                <div className="bg-black/70 backdrop-blur-md p-3 rounded-lg mt-2 mb-4 w-full">
+                  <p className="text-sm text-white">{imageData[currentPaperBenchIndex]?.caption}</p>
                 </div>
-                <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                
+                {/* Indicator bubbles */}
+                <div className="flex justify-center gap-2 mb-4">
                   {imageData.map((_, i) => (
                     <button 
                       key={i}
-                      onClick={() => setCurrentIndex(i)}
-                      className={`h-2 w-2 rounded-full ${i === currentIndex ? 'bg-[#00d2ff]' : 'bg-[#00d2ff]/30'}`}
+                      onClick={() => paperBenchApi?.scrollTo(i)}
+                      className={`h-2 w-2 rounded-full transition-all ${
+                        i === currentPaperBenchIndex 
+                          ? "bg-[#00d2ff] scale-125" 
+                          : "bg-[#00d2ff]/30 hover:bg-[#00d2ff]/50"
+                      }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
                 </div>
-                {/* Custom navigation buttons */}
-                <button 
-                  onClick={handlePrev}
-                  className="absolute left-0 top-1/3 transform -translate-y-1/2 h-8 w-8 ml-4 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20 flex items-center justify-center"
-                  aria-label="Previous slide"
-                >
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4">
-                    <path d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
-                  </svg>
-                </button>
-                <button 
-                  onClick={handleNext}
-                  className="absolute right-0 top-1/3 transform -translate-y-1/2 h-8 w-8 mr-4 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20 flex items-center justify-center"
-                  aria-label="Next slide"
-                >
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4">
-                    <path d="M6.1584 3.13514C5.95694 3.32401 5.94673 3.64042 6.13559 3.84188L9.565 7.49991L6.13559 11.1579C5.94673 11.3594 5.95694 11.6758 6.1584 11.8647C6.35986 12.0535 6.67627 12.0433 6.86514 11.8419L10.6151 7.84188C10.7954 7.64955 10.7954 7.35027 10.6151 7.15794L6.86514 3.15794C6.67627 2.95648 6.35986 2.94628 6.1584 3.13514Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
-                  </svg>
-                </button>
               </div>
             </div>
           </div>
@@ -355,61 +378,60 @@ const ProgramFeatures = () => {
               </div>
             </div>
             <div className="flex justify-center items-center">
-              {/* Custom carousel implementation using state instead of the Carousel component */}
-              <div className="w-full relative">
-                <div className="py-4">
-                  <div className="w-full flex flex-col items-center">
-                    <motion.div
-                      className="overflow-hidden rounded-lg relative max-w-xs mb-2"
-                      key={currentIndex}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{
-                        duration: 0.5,
-                        ease: 'easeInOut'
-                      }}
-                    >
-                      <img
-                        src={abhayImageData[currentIndex % abhayImageData.length].src}
-                        alt={`Abhay image ${currentIndex % abhayImageData.length + 1}`}
-                        className="w-full h-auto object-cover transition-transform duration-500"
-                      />
-                    </motion.div>
-                    <div className="bg-black/70 backdrop-blur-md p-3 rounded-lg mb-8">
-                      <p className="text-sm text-white">{abhayImageData[currentIndex % abhayImageData.length].caption}</p>
-                    </div>
+              {/* Abhay Carousel - using the Carousel component */}
+              <div className="w-full max-w-xs">
+                <Carousel
+                  ref={abhayCarouselRef}
+                  setApi={setAbhayApi}
+                  opts={{
+                    align: "center",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {abhayImageData.map((image, index) => (
+                      <CarouselItem key={index} className="basis-full">
+                        <div className="relative h-[280px] overflow-hidden rounded-lg bg-black/40">
+                          <img
+                            src={image.src}
+                            alt={`Abhay image ${index + 1}`}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  
+                  {/* Navigation arrows */}
+                  <div className="absolute -left-4 top-1/2 -translate-y-1/2">
+                    <CarouselPrevious className="h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
                   </div>
+                  <div className="absolute -right-4 top-1/2 -translate-y-1/2">
+                    <CarouselNext className="h-8 w-8 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20" />
+                  </div>
+                </Carousel>
+                
+                {/* Caption */}
+                <div className="bg-black/70 backdrop-blur-md p-3 rounded-lg mt-2 mb-4 w-full">
+                  <p className="text-sm text-white">{abhayImageData[currentAbhayIndex]?.caption}</p>
                 </div>
-                <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                
+                {/* Indicator bubbles */}
+                <div className="flex justify-center gap-2 mb-4">
                   {abhayImageData.map((_, i) => (
                     <button 
                       key={i}
-                      onClick={() => setCurrentIndex(i)}
-                      className={`h-2 w-2 rounded-full ${i === currentIndex % abhayImageData.length ? 'bg-[#00d2ff]' : 'bg-[#00d2ff]/30'}`}
+                      onClick={() => abhayApi?.scrollTo(i)}
+                      className={`h-2 w-2 rounded-full transition-all ${
+                        i === currentAbhayIndex 
+                          ? "bg-[#00d2ff] scale-125" 
+                          : "bg-[#00d2ff]/30 hover:bg-[#00d2ff]/50"
+                      }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
                 </div>
-                {/* Custom navigation buttons */}
-                <button 
-                  onClick={handlePrev}
-                  className="absolute left-0 top-1/3 transform -translate-y-1/2 h-8 w-8 ml-4 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20 flex items-center justify-center"
-                  aria-label="Previous slide"
-                >
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4">
-                    <path d="M8.84182 3.13514C9.04327 3.32401 9.05348 3.64042 8.86462 3.84188L5.43521 7.49991L8.86462 11.1579C9.05348 11.3594 9.04327 11.6758 8.84182 11.8647C8.64036 12.0535 8.32394 12.0433 8.13508 11.8419L4.38508 7.84188C4.20477 7.64955 4.20477 7.35027 4.38508 7.15794L8.13508 3.15794C8.32394 2.95648 8.64036 2.94628 8.84182 3.13514Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
-                  </svg>
-                </button>
-                <button 
-                  onClick={handleNext}
-                  className="absolute right-0 top-1/3 transform -translate-y-1/2 h-8 w-8 mr-4 rounded-full bg-[#00d2ff]/10 border border-[#00d2ff]/30 hover:bg-[#00d2ff]/20 flex items-center justify-center"
-                  aria-label="Next slide"
-                >
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4">
-                    <path d="M6.1584 3.13514C5.95694 3.32401 5.94673 3.64042 6.13559 3.84188L9.565 7.49991L6.13559 11.1579C5.94673 11.3594 5.95694 11.6758 6.1584 11.8647C6.35986 12.0535 6.67627 12.0433 6.86514 11.8419L10.6151 7.84188C10.7954 7.64955 10.7954 7.35027 10.6151 7.15794L6.86514 3.15794C6.67627 2.95648 6.35986 2.94628 6.1584 3.13514Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
-                  </svg>
-                </button>
               </div>
             </div>
           </div>
