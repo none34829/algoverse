@@ -77,6 +77,8 @@ const Research = () => {
               </motion.div>
             </motion.div>
           </section>
+
+          <ResearchCitations />
           
           {/* Conference Publications Tabs */}
           <section className="container mx-auto px-4 py-16">
@@ -171,8 +173,11 @@ const Research = () => {
                   className="mb-10 glass-card rounded-xl p-6 border border-[#00d2ff]/20"
                 >
                   <h3 className="text-2xl font-bold mb-4">Our Applied ML Research</h3>
+                  <p className="text-gray-300 mb-4">
+                    Our Applied Machine Learning papers translate cutting-edge ML research into impactful real-world solutions, driving innovation across domains such as healthcare, biology, environmental science, and beyond.
+                  </p>
                   <p className="text-gray-300">
-                    Our applied machine learning research demonstrates the real-world impact of our student projects across various domains including healthcare, computer vision, robotics, and more. These publications showcase how theoretical advancements can be translated into practical applications that address important challenges.
+                    In addition to submissions at premier ML conferences, our work is regularly featured at prestigious domain-specific venues, such as CVPR for computer vision (<a href="https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=eng_computervisionpatternrecognition#:~:text=IEEE/CVF%20Conference%20on%20Computer%20Vision%20and%20Pattern%20Recognition" target="_blank" rel="noopener noreferrer" className="text-[#00d2ff] hover:underline">Ranking</a>), JID for dermatology (<a href="https://scholar.google.com/citations?view_op=top_venues&hl=en&vq=med_dermatology#:~:text=Journal%20of%20Investigative%20Dermatology" target="_blank" rel="noopener noreferrer" className="text-[#00d2ff] hover:underline">Ranking</a>), or AAAI for applications of AI (<a href="https://scholar.google.es/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence#:~:text=AAAI%20Conference%20on%20Artificial%20Intelligence" target="_blank" rel="noopener noreferrer" className="text-[#00d2ff] hover:underline">Ranking</a>).
                   </p>
                 </motion.div>
               )}
@@ -232,9 +237,21 @@ const Research = () => {
                 )}
                 
                 {activeTab === "applied-ml" && (
-                  <div className="text-center p-8 border border-dashed border-gray-700 rounded-xl">
-                    <p className="text-gray-400">Applied ML publications coming soon</p>
-                  </div>
+                  <>
+                    {appliedMlPublications.map((pub, idx) => (
+                      <PublicationCard key={idx} publication={pub} />
+                    ))}
+                    <ConferenceImageGallery 
+                      title="Applied ML Research Highlights" 
+                      images={[
+                        "/accvday1.webp",
+                        "/ieeebhiday1.png",
+                        "/aaaiday2.jpg",
+                        "/aaaiday1.jpg",
+                        "/vancouver_convention_center.png"
+                      ]} 
+                    />
+                  </>
                 )}
               </div>
             </div>
@@ -291,7 +308,6 @@ const Research = () => {
                   institution="Princeton, MIT, and other universities"
                 />
               </div>
-              <ResearchCitations />
             </motion.div>
           </section>
         </main>
@@ -472,6 +488,108 @@ const ConferenceImageGallery: React.FC<{
 };
 
 // Sample publications data
+const appliedMlPublications: PublicationProps[] = [
+  {
+    title: "SkinGPT-4 provides a generalizable foundation for fair and customizable skin disease classification models",
+    conference: "JID 2025;",
+    location: "San Diego, CA, USA",
+    track: "selected for Oral Presentation (6% of all accepted papers)",
+    authors: ["Kiran Nijjer", "Ryan Bui", "Adnan Ahmed", "Derek Jiu", "Peter Wang"],
+    logoUrl: "/jid.png"
+  },
+  {
+    title: "Large language models display skin tone biases in the evaluation of common dermatological conditions",
+    conference: "JID 2025",
+    location: "San Diego, CA, USA",
+    authors: ["Kiran Nijjer", "Ryan Bui", "Adnan Ahmed", "Derek Jiu", "Peter Wang"],
+    logoUrl: "/jid.png"
+  },
+  {
+    title: "Artificial Intelligence-driven Assessment Of Group Dynamics Across Peripheral Endovascular Interventions",
+    conference: "ACS Clinical Congress 2025",
+    location: "Chicago, Illinois, USA",
+    authors: ["James Ignacio", "Isaac Picov", "Leia Chen", "Philip Chen"],
+    logoUrl: "/acs2025.webp"
+  },
+  {
+    title: "Artificial Intelligence-enabled Analysis Of Visual Attention And Hand-tool Interactions In The Operating Room",
+    conference: "ACS Clinical Congress 2025",
+    location: "Chicago, Illinois, USA",
+    authors: ["Leia Chen", "Philip Chen", "James Ignacio", "Isaac Picov"],
+    logoUrl: "/acs2025.webp"
+  },
+  {
+    title: "Differentiation of Acute Disseminated Encephalomyelitis from Multiple Sclerosis Using a Novel Brain Lesion Segmentation and Classification Pipeline",
+    conference: "IEEE BHI 2024",
+    location: "Houston, Texas, USA",
+    authors: ["Osama Radi", "Aiden Huang", "Kira Murukami"],
+    paperLink: "#",
+    websiteLink: "#",
+    logoUrl: "/ieeebhi2024.webp"
+  },
+  {
+    title: "Medical Imaging Complexity and its Effects on GAN Performance",
+    conference: "GAISynMeD @ ACCV 2024",
+    location: "Hanoi, Vietnam",
+    authors: ["William Cagas", "Chan Ko", "Blake Hsiao", "Shryuk Grandhi", "Rishi Bhattacharya"],
+    paperLink: "#",
+    websiteLink: "#",
+    logoUrl: "/accv2024.webp"
+  },
+  {
+    title: "Leveraging Neuroscience-Informed Centrality for Topology-Aware Pruning in Neural Networks",
+    conference: "Efficient Large Vision Models @ CVPR 2025",
+    location: "Nashville, TN, USA",
+    authors: ["Nick Cui", "Trevor Xing-Xie", "Arushi Gupta", "Peter Choi"],
+    logoUrl: "/cvpr2025logo.webp"
+  },
+  {
+    title: "Testing Evolutionary and Reinforcement Learning Approaches to Traffic Flow Optimization in SUMO",
+    conference: "AI for Urban Planning @ AAAI 2025",
+    location: "Philadelphia, Pennsylvania, USA",
+    authors: ["Dominic Domingo", "Aryan Bandi", "Arya Kunisetty", "Ahan Banerjee"],
+    logoUrl: "/aaai2025logo.webp"
+  },
+  {
+    title: "A Neural Network Framework for Ridership Prediction in NYC",
+    conference: "AI for Urban Planning @ AAAI 2025",
+    location: "Philadelphia, Pennsylvania, USA",
+    authors: ["Joshua Peguero", "Felix Lee"],
+    logoUrl: "/aaai2025logo.webp"
+  },
+  {
+    title: "DiversityMedQA: Assessing Demographic Biases in Medical Diagnosis using LLMs",
+    conference: "AIM-FM @ NeurIPS 2024",
+    location: "Vancouver, Canada",
+    authors: ["Rajat Rawat", "Hudson McBride", "Rajarshi Ghosh", "Dhiyaan Nirmal", "Jong Moon", "Dhruv Alamuri"],
+    paperLink: "#",
+    logoUrl: "/neuripslogo.webp",
+    secondLogoUrl: "/emnlp2024logo.webp",
+    secondConference: "EMNLP Positive Impact Track 2024",
+    secondLocation: "Miami, Florida"
+  },
+  {
+    title: "AAVENUE: Detecting LLM Biases on NLU Tasks in AAVE via a Novel Benchmark",
+    conference: "NeurIPS High School Track 2024",
+    location: "Vancouver, Canada",
+    authors: ["Abhay Gupta", "Philip Meng", "Ece Yurtseven"],
+    paperLink: "#",
+    websiteLink: "#",
+    logoUrl: "/neuripslogo.webp",
+    secondLogoUrl: "/emnlp2024logo.webp",
+    secondConference: "EMNLP Positive Impact Track 2024",
+    secondLocation: "Miami, Florida"
+  },
+  {
+    title: "NusaMT-7B: Machine Translation for Low-Resource Indonesian Languages with LLMs",
+    conference: "SoLaR @ NeurIPS 2024",
+    location: "Vancouver, Canada",
+    authors: ["William Tan"],
+    paperLink: "#",
+    logoUrl: "/neuripslogo.webp"
+  }
+];
+
 const neuripsPublications: PublicationProps[] = [
   {
     title: "Translation Bias and Accuracy in Multilingual LLMs for Cross-Language Claim Verification",
