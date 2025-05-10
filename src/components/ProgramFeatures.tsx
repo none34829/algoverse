@@ -280,7 +280,7 @@ const ProgramFeatures = () => {
                 *The other two researchers were 1: already accepted to college at the time they joined the project and 2: based in Germany
               </p>
               <div className="mt-6">
-                <a href="#research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
+                <a href="/research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
                   <span>Read More Publications</span>
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -369,7 +369,7 @@ const ProgramFeatures = () => {
               After Algoverse, Abhay acquired internships at <span className="text-[#00d2ff]">Stanford, MIT, and Harvard</span> (Reference: <span className="text-[#00d2ff]">LinkedIn</span>).
               </p>
               <div className="mt-6">
-                <a href="#research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
+                <a href="/research" className="inline-flex items-center gap-2 text-[#00d2ff] hover:text-white transition-colors">
                   <span>Read More Publications</span>
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
