@@ -1,7 +1,51 @@
 
 import { motion } from "framer-motion";
 import InfoCard from "./InfoCard";
-import { Calendar, Users, BrainCircuit, Sparkle, Zap, GraduationCap } from "lucide-react";
+import { Calendar, Users, BrainCircuit, Sparkle, Zap, GraduationCap, Clock } from "lucide-react";
+import { SessionInfo } from "@/types";
+
+// Define sessions in a consistent format with SessionSchedule
+const sessions: SessionInfo[] = [
+  {
+    title: "Spring 2025 Session",
+    dates: "March 16 - June 1, 2025",
+    lectureSchedules: [
+      "Lecture: Sunday, 3:00 - 4:30pm PT"
+    ]
+  },
+  {
+    title: "Summer 2025 Sessions",
+    dates: "May 25 - August 17, 2025",
+    lectureSchedules: [
+      "Lecture: Sunday, 1:00 - 2:30pm PT"
+    ]
+  },
+  {
+    title: "",
+    dates: "June 7 - August 31, 2025",
+    lectureSchedules: [
+      "Lecture: Saturday, 10:00 - 11:30am PT",
+      "- or -",
+      "Lecture: Sunday, 3:00 - 4:30pm PT"
+    ]
+  },
+  {
+    title: "",
+    dates: "June 21 - September 14, 2025",
+    lectureSchedules: [
+      "Lecture: Saturday, 1:00 - 2:30pm PT",
+      "- or -",
+      "Lecture: Sunday, 10:00 - 11:30am PT"
+    ]
+  },
+  {
+    title: "",
+    dates: "July 13 - October 5, 2025",
+    lectureSchedules: [
+      "Lecture: Saturday, 6:00 - 7:30pm PT"
+    ]
+  }
+];
 
 const ProgramInfo = () => {
   return (
@@ -171,7 +215,7 @@ const ProgramInfo = () => {
           </motion.div>
         </div>
         
-        {/* Program sessions timeline */}
+        {/* Program sessions timeline - Updated design */}
         <motion.div 
           className="mt-24"
           initial={{ opacity: 0, y: 20 }}
@@ -186,102 +230,79 @@ const ProgramInfo = () => {
           </div>
           
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#00d2ff] to-[#3a47d5] transform -translate-x-1/2 hidden md:block"></div>
+            {/* Timeline connector */}
+            <div className="absolute left-4 md:left-1/2 top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#00d2ff] to-[#3a47d5] hidden md:block"></div>
             
             <div className="space-y-12">
-              {/* Spring 2025 */}
-              <div className="relative">
-                <div className="md:flex items-center">
-                  <div className="md:w-1/2 pr-10 text-right hidden md:block">
-                    <h4 className="text-xl font-bold text-white mb-2">Spring 2025 Session</h4>
-                    <div className="glass-card inline-block px-4 py-2">March 16 - June 1, 2025</div>
-                  </div>
-                  
-                  <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/4 hidden md:block">
-                    <div className="w-6 h-6 rounded-full bg-[#00d2ff] border-4 border-[#050017]"></div>
-                  </div>
-                  
-                  <div className="md:w-1/2 pl-10 md:pt-0 pt-4 block md:hidden">
-                    <h4 className="text-xl font-bold text-white mb-2">Spring 2025 Session</h4>
-                    <div className="glass-card inline-block px-4 py-2">March 16 - June 1, 2025</div>
-                  </div>
-                  
-                  <div className="md:w-1/2 pl-10">
-                    <div className="glass-card p-6">
-                      <p className="font-medium text-[#00d2ff]">Lecture: Sunday, 3:00 - 4:30pm PT</p>
+              {sessions.map((session, index) => {
+                const isEven = index % 2 === 0;
+                const isFirst = index === 0;
+                const isSecond = index === 1;
+                const hasTitle = !!session.title;
+                
+                return (
+                  <div key={index} className="relative">
+                    <div className={`md:flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
+                      {/* Timeline node */}
+                      <div className="absolute left-4 md:left-1/2 top-6 transform -translate-x-1/2 hidden md:block">
+                        <div className={`w-5 h-5 rounded-full border-2 border-[#050017] ${
+                          isFirst ? 'bg-[#00d2ff]' : 
+                          isSecond ? 'bg-[#3a47d5]' : 
+                          'bg-gradient-to-r from-[#00d2ff] to-[#3a47d5]'
+                        } shadow-glow-sm`}></div>
+                      </div>
+                      
+                      {/* Content */}
+                      <motion.div 
+                        className={`md:w-1/2 ${isEven ? 'md:pr-16' : 'md:pl-16'} relative`}
+                        initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <div className="ml-8 md:ml-0 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-6 hover:border-[#00d2ff]/30 transition-all duration-300">
+                          <div className="flex flex-col gap-3">
+                            {hasTitle && (
+                              <h4 className="text-xl font-bold text-white">{session.title}</h4>
+                            )}
+                            
+                            <div className="flex items-center text-[#00d2ff] mb-2">
+                              <Calendar size={18} className="mr-2" />
+                              <span className="font-medium">{session.dates}</span>
+                            </div>
+                            
+                            <div className="space-y-2 bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/5">
+                              {session.lectureSchedules.map((schedule, idx) => (
+                                <p 
+                                  key={idx} 
+                                  className={schedule === "- or -" 
+                                    ? 'text-center text-[#00d2ff] italic my-2' 
+                                    : 'text-white/70 flex items-center'}
+                                >
+                                  {schedule !== "- or -" && <Clock size={16} className="mr-2 text-[#00d2ff]" />}
+                                  {schedule}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              {/* Summer 2025 */}
-              <div className="relative">
-                <div className="md:flex items-center">
-                  <div className="md:w-1/2 pr-10">
-                    <div className="glass-card p-6 text-right">
-                      <p className="font-medium text-[#00d2ff]">Lecture: Sunday, 1:00 - 2:30pm PT</p>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/4 hidden md:block">
-                    <div className="w-6 h-6 rounded-full bg-[#3a47d5] border-4 border-[#050017]"></div>
-                  </div>
-                  
-                  <div className="md:w-1/2 pl-10 md:pt-0 pt-4">
-                    <h4 className="text-xl font-bold text-white mb-2">Summer 2025 Sessions</h4>
-                    <div className="glass-card inline-block px-4 py-2">May 25 - August 17, 2025</div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Additional summer sessions */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    dates: "June 7 - August 31, 2025",
-                    lectures: ["Lecture: Saturday, 10:00 - 11:30am PT", "- or -", "Lecture: Sunday, 3:00 - 4:30pm PT"]
-                  },
-                  {
-                    dates: "June 21 - September 14, 2025",
-                    lectures: ["Lecture: Saturday, 1:00 - 2:30pm PT", "- or -", "Lecture: Sunday, 10:00 - 11:30am PT"]
-                  },
-                  {
-                    dates: "July 13 - October 5, 2025",
-                    lectures: ["Lecture: Saturday, 6:00 - 7:30pm PT"]
-                  }
-                ].map((session, index) => (
-                  <motion.div 
-                    key={index}
-                    className="glass-card p-6 border border-[#00d2ff]/30 hover:border-[#00d2ff]/60 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                  >
-                    <p className="font-semibold text-white mb-3">{session.dates}</p>
-                    <div className="space-y-1">
-                      {session.lectures.map((schedule, idx) => (
-                        <p 
-                          key={idx} 
-                          className={schedule === "- or -" 
-                            ? 'text-center text-[#00d2ff] italic my-1' 
-                            : 'text-white/70'}
-                        >
-                          {schedule}
-                        </p>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
           
-          <div className="mt-10 text-center">
-            <p className="inline-block glass-card px-6 py-3 text-[#00d2ff] font-semibold">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-10 text-center"
+          >
+            <p className="inline-block backdrop-blur-md bg-[#00d2ff]/10 border border-[#00d2ff]/30 text-[#00d2ff] px-6 py-3 rounded-lg font-semibold">
               Summer Deadline: Sunday, May 4, 11:59 pm PT
             </p>
-          </div>
+          </motion.div>
         </motion.div>
         
         {/* Program costs section */}
