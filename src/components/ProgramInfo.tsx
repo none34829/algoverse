@@ -1,8 +1,8 @@
-
 import { motion } from "framer-motion";
 import InfoCard from "./InfoCard";
 import { Calendar, Users, BrainCircuit, Sparkle, Zap, GraduationCap, Clock } from "lucide-react";
 import { SessionInfo } from "@/types";
+import { Badge } from "./ui/badge";
 
 // Define sessions in a consistent format with SessionSchedule
 const sessions: SessionInfo[] = [
@@ -11,41 +11,84 @@ const sessions: SessionInfo[] = [
     dates: "March 16 - June 1, 2025",
     lectureSchedules: [
       "Lecture: Sunday, 3:00 - 4:30pm PT"
-    ]
+    ],
+    season: "Spring"
   },
   {
-    title: "Summer 2025 Sessions",
+    title: "Summer 2025 Session",
     dates: "May 25 - August 17, 2025",
     lectureSchedules: [
       "Lecture: Sunday, 1:00 - 2:30pm PT"
-    ]
+    ],
+    season: "Summer"
   },
   {
-    title: "",
+    title: "Summer 2025 Session",
     dates: "June 7 - August 31, 2025",
     lectureSchedules: [
       "Lecture: Saturday, 10:00 - 11:30am PT",
       "- or -",
       "Lecture: Sunday, 3:00 - 4:30pm PT"
-    ]
+    ],
+    season: "Summer"
   },
   {
-    title: "",
+    title: "Summer 2025 Session",
     dates: "June 21 - September 14, 2025",
     lectureSchedules: [
       "Lecture: Saturday, 1:00 - 2:30pm PT",
       "- or -",
       "Lecture: Sunday, 10:00 - 11:30am PT"
-    ]
+    ],
+    season: "Summer"
   },
   {
-    title: "",
+    title: "Summer 2025 Session",
     dates: "July 13 - October 5, 2025",
     lectureSchedules: [
       "Lecture: Saturday, 6:00 - 7:30pm PT"
-    ]
+    ],
+    season: "Summer"
   }
 ];
+
+// Group sessions by season
+const groupedSessions: Record<string, SessionInfo[]> = sessions.reduce((acc, session) => {
+  const season = session.season || 'Other';
+  if (!acc[season]) {
+    acc[season] = [];
+  }
+  acc[season].push(session);
+  return acc;
+}, {} as Record<string, SessionInfo[]>);
+
+const seasonColors = {
+  Spring: {
+    badge: 'text-[#00d2ff] bg-[#00d2ff]/10 border-[#00d2ff]/30',
+    gradient: 'from-green-400 to-[#00d2ff]',
+    dot: 'bg-[#00d2ff]'
+  },
+  Summer: {
+    badge: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/30',
+    gradient: 'from-yellow-400 to-orange-400',
+    dot: 'bg-yellow-400'
+  },
+  Fall: {
+    badge: 'text-orange-400 bg-orange-400/10 border-orange-400/30',
+    gradient: 'from-orange-400 to-red-400',
+    dot: 'bg-orange-400'
+  },
+  Winter: {
+    badge: 'text-blue-400 bg-blue-400/10 border-blue-400/30',
+    gradient: 'from-blue-400 to-purple-400',
+    dot: 'bg-blue-400'
+  },
+  Other: {
+    badge: 'text-purple-400 bg-purple-400/10 border-purple-400/30',
+    gradient: 'from-purple-400 to-pink-400',
+    dot: 'bg-purple-400'
+  }
+};
 
 const ProgramInfo = () => {
   return (
@@ -215,7 +258,7 @@ const ProgramInfo = () => {
           </motion.div>
         </div>
         
-        {/* Program sessions timeline - Updated design */}
+        {/* Program sessions timeline - Updated design with seasonal grouping */}
         <motion.div 
           className="mt-24"
           initial={{ opacity: 0, y: 20 }}
@@ -229,69 +272,80 @@ const ProgramInfo = () => {
             </p>
           </div>
           
-          <div className="relative">
-            {/* Timeline connector */}
-            <div className="absolute left-4 md:left-1/2 top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#00d2ff] to-[#3a47d5] hidden md:block"></div>
-            
-            <div className="space-y-12">
-              {sessions.map((session, index) => {
-                const isEven = index % 2 === 0;
-                const isFirst = index === 0;
-                const isSecond = index === 1;
-                const hasTitle = !!session.title;
+          {Object.entries(groupedSessions).map(([season, seasonSessions], seasonIndex) => (
+            <div key={season} className="mb-16 last:mb-0">
+              <motion.div 
+                className="flex items-center mb-6 pl-4 md:pl-0"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: seasonIndex * 0.2 }}
+              >
+                <div className={`h-8 w-8 rounded-full flex items-center justify-center ${seasonColors[season as keyof typeof seasonColors]?.badge} mr-3`}>
+                  <div className={`h-4 w-4 rounded-full ${seasonColors[season as keyof typeof seasonColors]?.dot}`}></div>
+                </div>
+                <h3 className={`text-2xl font-bold bg-gradient-to-r ${seasonColors[season as keyof typeof seasonColors]?.gradient} bg-clip-text text-transparent`}>
+                  {season} 2025
+                </h3>
+              </motion.div>
+              
+              <div className="relative">
+                {/* Timeline connector */}
+                <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#00d2ff] to-[#3a47d5] hidden md:block"></div>
                 
-                return (
-                  <div key={index} className="relative">
-                    <div className={`md:flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-                      {/* Timeline node */}
-                      <div className="absolute left-4 md:left-1/2 top-6 transform -translate-x-1/2 hidden md:block">
-                        <div className={`w-5 h-5 rounded-full border-2 border-[#050017] ${
-                          isFirst ? 'bg-[#00d2ff]' : 
-                          isSecond ? 'bg-[#3a47d5]' : 
-                          'bg-gradient-to-r from-[#00d2ff] to-[#3a47d5]'
-                        } shadow-glow-sm`}></div>
-                      </div>
-                      
-                      {/* Content */}
-                      <motion.div 
-                        className={`md:w-1/2 ${isEven ? 'md:pr-16' : 'md:pl-16'} relative`}
-                        initial={{ opacity: 0, x: isEven ? -20 : 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                      >
-                        <div className="ml-8 md:ml-0 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-6 hover:border-[#00d2ff]/30 transition-all duration-300">
-                          <div className="flex flex-col gap-3">
-                            {hasTitle && (
-                              <h4 className="text-xl font-bold text-white">{session.title}</h4>
-                            )}
-                            
-                            <div className="flex items-center text-[#00d2ff] mb-2">
-                              <Calendar size={18} className="mr-2" />
-                              <span className="font-medium">{session.dates}</span>
-                            </div>
-                            
-                            <div className="space-y-2 bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/5">
-                              {session.lectureSchedules.map((schedule, idx) => (
-                                <p 
-                                  key={idx} 
-                                  className={schedule === "- or -" 
-                                    ? 'text-center text-[#00d2ff] italic my-2' 
-                                    : 'text-white/70 flex items-center'}
-                                >
-                                  {schedule !== "- or -" && <Clock size={16} className="mr-2 text-[#00d2ff]" />}
-                                  {schedule}
-                                </p>
-                              ))}
-                            </div>
+                <div className="space-y-12">
+                  {seasonSessions.map((session, index) => {
+                    const isEven = index % 2 === 0;
+                    
+                    return (
+                      <div key={index} className="relative">
+                        <div className={`md:flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
+                          {/* Timeline node */}
+                          <div className="absolute left-4 md:left-1/2 top-6 transform -translate-x-1/2 hidden md:block">
+                            <div className={`w-5 h-5 rounded-full border-2 border-[#050017] ${seasonColors[season as keyof typeof seasonColors]?.dot} shadow-glow-sm`}></div>
                           </div>
+                          
+                          {/* Content */}
+                          <motion.div 
+                            className={`md:w-1/2 ${isEven ? 'md:pr-16' : 'md:pl-16'} relative`}
+                            initial={{ opacity: 0, x: isEven ? -20 : 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                          >
+                            <div className="ml-8 md:ml-0 backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-6 hover:border-[#00d2ff]/30 transition-all duration-300">
+                              <div className="flex flex-col gap-3">
+                                <Badge className={`self-start ${seasonColors[season as keyof typeof seasonColors]?.badge}`}>
+                                  {season} Cohort
+                                </Badge>
+                                
+                                <div className="flex items-center text-[#00d2ff] mb-2">
+                                  <Calendar size={18} className="mr-2" />
+                                  <span className="font-medium">{session.dates}</span>
+                                </div>
+                                
+                                <div className="space-y-2 bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/5">
+                                  {session.lectureSchedules.map((schedule, idx) => (
+                                    <p 
+                                      key={idx} 
+                                      className={schedule === "- or -" 
+                                        ? 'text-center text-[#00d2ff] italic my-2' 
+                                        : 'text-white/70 flex items-center'}
+                                    >
+                                      {schedule !== "- or -" && <Clock size={16} className="mr-2 text-[#00d2ff]" />}
+                                      {schedule}
+                                    </p>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
                         </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                );
-              })}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

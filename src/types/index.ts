@@ -1,4 +1,3 @@
-
 export interface NavItem {
   label: string;
   href: string;
@@ -8,6 +7,7 @@ export interface SessionInfo {
   title: string;
   dates: string;
   lectureSchedules: string[];
+  season?: 'Spring' | 'Summer' | 'Fall' | 'Winter';
 }
 
 export interface ResearchPaper {
